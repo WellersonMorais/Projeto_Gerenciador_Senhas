@@ -1,61 +1,58 @@
 
 #  Gerenciador de Senhas Seguro em Java
 
-Este projeto é um **gerenciador de senhas seguro** desenvolvido em Java, como parte de uma atividade acadêmica com foco em **segurança da informação**.
+Este projeto é um **gerenciador de senhas seguro** desenvolvido em Java, como parte de uma atividade acadêmica com foco em **segurança da informação** e **interfaces gráficas com Swing**.
+
+---
 
 ##  Funcionalidades
 
-- [x] Cadastro de usuário com sugestão de senha forte
-- [x] Login seguro com autenticação de dois fatores (2FA) via e-mail real
-- [x] Armazenamento de senhas com criptografia AES
-- [x] Senhas principais protegidas com hash BCrypt
-- [x] Interface para gerenciamento de senhas com geração de senhas fortes
-- [x] Verificação de senhas comprometidas usando a API do Have I Been Pwned
+- [x] Cadastro de usuário com sugestão automática de senha forte (preenchida no clique)
+- [x] Botão para alternar entre cadastro e login
+- [x] Envio real de e-mail com código de verificação (2FA)
+- [x] Autenticação segura com hash BCrypt
+- [x] Armazenamento local com criptografia AES
+- [x] Geração e gerenciamento de senhas fortes
+- [x] Verificação de senhas vazadas usando a API [Have I Been Pwned](https://haveibeenpwned.com/)
+- [x] Indicação visual de senhas comprometidas em vermelho
+- [x] Opção de excluir ou redefinir senhas individualmente
+
+---
 
 ##  Tecnologias Utilizadas
 
 - Java 8+
-- Java Swing (Interface gráfica)
+- Java Swing (interface gráfica)
 - JavaMail (envio de e-mails via SMTP)
-- Bouncy Castle (BCrypt)
-- AES (criptografia simétrica)
-- API Have I Been Pwned
+- jBCrypt (hash seguro de senhas)
+- AES com chave derivada por PBKDF2 (criptografia simétrica)
+- API Have I Been Pwned (verificação de vazamento)
 
-##  Como executar o projeto
-
-1. Clone o repositório ou extraia o `.zip`
-2. Certifique-se de que possui o JDK instalado
-3. Compile e execute a classe `Main.java`
-4. Utilize a interface gráfica para:
-   - Criar uma conta
-   - Realizar login com código enviado por e-mail
-   - Adicionar senhas de serviços com segurança
-
-##  Configuração de E-mail
-
-Este projeto utiliza o envio real de e-mails para autenticação 2FA. Os dados de e-mail estão configurados no arquivo:
-```
-src/security/EmailService.java
-```
-> É recomendável utilizar uma senha de aplicativo para garantir a segurança da sua conta.
+---
 
 ##  Estrutura de Diretórios
 
 ```
 PasswordManagerProject/
 ├── src/
-│   ├── main/
-│   │   └── Main.java
-│   ├── ui/
-│   │   ├── RegisterPage.java
-│   │   ├── LoginPage.java
-│   │   └── PasswordManagerPage.java
-│   └── security/
-│       ├── EmailService.java
-│       ├── PasswordUtils.java
-│       ├── EncryptionUtils.java
-│       └── LeakChecker.java
-├── credentials.txt
+│ ├── main/
+│ │ └── Main.java
+│ ├── model/
+│ │ └── User.java
+│ ├── ui/
+│ │ ├── RegisterPage.java
+│ │ ├── LoginPage.java
+│ │ └── PasswordManagerPage.java
+│ ├── security/
+│ │ ├── PasswordUtils.java
+│ │ ├── EncryptionUtils.java
+│ │ ├── LeakChecker.java
+│ │ └── EmailSender.java
+├── lib/ # Bibliotecas .jar (jBCrypt, mail, etc.)
+├── out/ # Diretório de saída da compilação
+├── compile-run.bat # Script para compilar e executar
+├── credentials.txt # Dados criptografados
+└── README.md
 ```
 
 ##  Segurança
@@ -66,4 +63,15 @@ PasswordManagerProject/
 
 ---
 
-Desenvolvido para fins acadêmicos.
+##  Como Executar
+
+1. **Clone o repositório** ou extraia o `.zip`
+2. **Configure o e-mail** com senha de aplicativo em `EmailSender.java`:
+
+```java
+private static final String FROM_EMAIL = "seu-email@gmail.com";
+private static final String APP_PASSWORD = "sua-senha-de-aplicativo";
+```
+---
+
+Este projeto foi desenvolvido com fins educacionais e demonstrativos. 

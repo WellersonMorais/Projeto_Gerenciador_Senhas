@@ -1,10 +1,11 @@
 @echo off
+chcp 65001
 cd /d "%~dp0"
 echo ================================
 echo Compilando PasswordManagerProject
 echo ================================
 
-REM Criar diretÛrio "out" se n„o existir
+REM Criar diret√≥rio "out" se n√£o existir
 if not exist out (
     mkdir out
 )
@@ -27,7 +28,7 @@ echo ------------------------
 echo Compilado com sucesso!
 echo ------------------------
 
-REM Pergunta se o usu·rio quer executar
+REM Pergunta se o usu√°rio quer executar
 set /p runApp=Deseja executar o programa agora? (s/n): 
 if /i "%runApp%"=="s" (
     echo Executando...
