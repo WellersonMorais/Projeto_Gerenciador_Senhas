@@ -6,8 +6,8 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
 public class EmailSender {
-    private static final String FROM_EMAIL = "wellerson.paulo@souunit.com.br";
-    private static final String APP_PASSWORD = "trvp zcxp ahhy gour";
+    private static final String FROM_EMAIL = "app_email";
+    private static final String APP_PASSWORD = "app_password";
 
     public static void sendVerificationEmail(String toEmail, String code) throws MessagingException {
         Properties props = new Properties();

@@ -9,19 +9,19 @@ import java.security.MessageDigest;
 public class LeakChecker {
 
     /**
-     * Verifica se a senha foi vazada usando a API "Pwned Passwords"
-     * @param password senha a ser checada
-     * @return true se a senha foi vazada, false caso contrário
+    
+     * @param password 
+     * @return 
      */
     public static boolean isPasswordLeaked(String password) {
         try {
-            // Calcula SHA-1 da senha e deixa maiúscula
+            
             String sha1 = sha1(password).toUpperCase();
 
-            // Pega os 5 primeiros caracteres do hash
+            
             String prefix = sha1.substring(0, 5);
 
-            // Faz requisição à API com o prefixo
+            
             URL url = new URL("https://api.pwnedpasswords.com/range/" + prefix);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
@@ -29,11 +29,11 @@ public class LeakChecker {
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String line;
 
-            // Verifica se algum sufixo retornado coincide com o hash restante
+           
             while ((line = in.readLine()) != null) {
                 if (line.startsWith(sha1.substring(5))) {
                     in.close();
-                    return true; // Senha vazada
+                    return true; 
                 }
             }
             in.close();
@@ -41,14 +41,14 @@ public class LeakChecker {
             e.printStackTrace();
         }
 
-        return false; // Senha não encontrada no banco de dados de vazamentos
+        return false; 
     }
 
     /**
-     * Calcula SHA-1 da string passada
-     * @param input texto a ser hasheado
-     * @return hash SHA-1 em hexadecimal
-     * @throws Exception caso ocorra erro no cálculo
+     
+     * @param input 
+     * @return 
+     * @throws Exception 
      */
     private static String sha1(String input) throws Exception {
         MessageDigest md = MessageDigest.getInstance("SHA-1");

@@ -1,9 +1,0 @@
-C:\Users\wellerson\Desktop\PasswordManagerProject\src\main\Main.java
-C:\Users\wellerson\Desktop\PasswordManagerProject\src\model\User.java
-C:\Users\wellerson\Desktop\PasswordManagerProject\src\security\EmailSender.java
-C:\Users\wellerson\Desktop\PasswordManagerProject\src\security\EncryptionUtils.java
-C:\Users\wellerson\Desktop\PasswordManagerProject\src\security\LeakChecker.java
-C:\Users\wellerson\Desktop\PasswordManagerProject\src\security\PasswordUtils.java
-C:\Users\wellerson\Desktop\PasswordManagerProject\src\ui\ui\LoginPage.java
-C:\Users\wellerson\Desktop\PasswordManagerProject\src\ui\ui\PasswordManagerPage.java
-C:\Users\wellerson\Desktop\PasswordManagerProject\src\ui\ui\RegisterPage.java
