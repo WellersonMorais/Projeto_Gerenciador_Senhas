@@ -1,23 +1,24 @@
 package ui;
 
+import db.DatabaseConnection;
 import security.PasswordUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class LoginPage extends JFrame {
     private JTextField emailField;
     private JPasswordField passwordField;
-    private JButton loginButton;
+    
 
     public LoginPage() {
         setTitle("Login");
         setSize(400, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         initComponents();
@@ -25,6 +26,7 @@ public class LoginPage extends JFrame {
     }
 
     private void initComponents() {
+        JButton loginButton;
         JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
@@ -41,7 +43,7 @@ public class LoginPage extends JFrame {
         panel.add(emailField);
         panel.add(passwordLabel);
         panel.add(passwordField);
-        panel.add(new JLabel()); // Espaço vazio para alinhamento
+        panel.add(new JLabel()); // Espaço vazio
         panel.add(loginButton);
 
         add(panel);
@@ -58,19 +60,20 @@ public class LoginPage extends JFrame {
 
         boolean authenticated = false;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(";");
-                if (parts.length >= 2 && parts[0].equals(email)) {
-                    if (PasswordUtils.verifyPassword(password, parts[1])) {
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            String sql = "SELECT password FROM users WHERE email = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, email);
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) {
+                    String storedHash = rs.getString("password");
+                    if (PasswordUtils.verifyPassword(password, storedHash)) {
                         authenticated = true;
-                        break;
                     }
                 }
             }
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Erro ao ler arquivo de usuários: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao acessar o banco de dados: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
             return;
         }

@@ -2,6 +2,7 @@
 *.log
 *.tmp
 *.bak
-*.txt
+sources.txt
+credentials.txt
 
 

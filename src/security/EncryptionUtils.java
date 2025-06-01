@@ -5,11 +5,18 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 
 public class EncryptionUtils {
+
+    private EncryptionUtils() {
+    throw new IllegalStateException("Utility class");
+    }
     
     private static final String SECRET = "chaveSuperSecreta123";
     private static final String SALT = "saltsalt123";
@@ -26,7 +33,7 @@ public class EncryptionUtils {
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivSpec);
 
-        byte[] encrypted = cipher.doFinal(strToEncrypt.getBytes("UTF-8"));
+        byte[] encrypted = cipher.doFinal(strToEncrypt.getBytes(StandardCharsets.UTF_8));
 
        
         byte[] ivAndEncrypted = new byte[iv.length + encrypted.length];
@@ -55,12 +62,12 @@ public class EncryptionUtils {
 
        
         byte[] decrypted = cipher.doFinal(encrypted);
-        return new String(decrypted, "UTF-8");
+        return new String(decrypted, StandardCharsets.UTF_8);
     }
 
-    private static SecretKeySpec getSecretKey() throws Exception {
+    private static SecretKeySpec getSecretKey() throws NoSuchAlgorithmException, InvalidKeySpecException {
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-        KeySpec spec = new PBEKeySpec(SECRET.toCharArray(), SALT.getBytes(), 65536, 256);
+        KeySpec spec = new PBEKeySpec(SECRET.toCharArray(), SALT.getBytes(StandardCharsets.UTF_8), 65536, 256);
         byte[] key = factory.generateSecret(spec).getEncoded();
         return new SecretKeySpec(key, "AES");
     }

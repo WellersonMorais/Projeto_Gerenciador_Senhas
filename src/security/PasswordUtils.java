@@ -5,17 +5,18 @@ import java.security.SecureRandom;
 
 public class PasswordUtils {
 
+    private PasswordUtils() {
+    throw new IllegalStateException("Utility class");
+    }
+
     /**
-     
      * @param plainTextPassword 
      * @return 
      */
     public static String hashPassword(String plainTextPassword) {
         return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt(12));
     }
-
     /**
-    
      * @param plainTextPassword 
      * @param hashedPassword 
      * @return 
@@ -23,9 +24,7 @@ public class PasswordUtils {
     public static boolean verifyPassword(String plainTextPassword, String hashedPassword) {
         return BCrypt.checkpw(plainTextPassword, hashedPassword);
     }
-
     /**
-     
      * @return
      */
     public static String generateStrongPassword() {
