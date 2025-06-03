@@ -4,6 +4,8 @@ import jakarta.mail.*;
 import jakarta.mail.internet.*;
 import java.util.Properties;
 
+import db.ConfigPass;
+
 public class EmailService {
 
     private EmailService() {
@@ -12,7 +14,7 @@ public class EmailService {
 
     
     private static final String REMETENTE = "wellerson.paulo@souunit.com.br";
-    private static final String SENHA_APP = "aqui hfoa pibm sqnx";
+    private static final String SENHA_APP = ConfigPass.pegarSenhaApp();
 
     private static Session criarSessao() {
         Properties props = new Properties();

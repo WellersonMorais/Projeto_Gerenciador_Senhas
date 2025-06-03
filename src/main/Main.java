@@ -1,6 +1,7 @@
 package main;
 
 import ui.RegisterPage;
+import db.SetupConfigtable;
 import db.SetupDatabase;
 import config.Descriptografador;
 
@@ -8,6 +9,8 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
+
+        SetupConfigtable.setup();
         // Solicita a senha mestra
         JPasswordField campoSenha = new JPasswordField();
         Object[] mensagem = { "Digite a senha mestra:", campoSenha };

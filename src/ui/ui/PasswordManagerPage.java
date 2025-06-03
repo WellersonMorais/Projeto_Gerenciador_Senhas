@@ -28,6 +28,7 @@ public class PasswordManagerPage extends JFrame {
         setTitle("Gerenciador de Senhas - " + userEmail);
         setSize(500, 400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         setLocationRelativeTo(null);
 
         initComponents();

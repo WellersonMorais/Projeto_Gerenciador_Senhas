@@ -18,6 +18,7 @@ public class RegisterPage extends JFrame {
     public RegisterPage() {
         setTitle("Cadastro");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         setSize(400, 300);
         setLocationRelativeTo(null);
 

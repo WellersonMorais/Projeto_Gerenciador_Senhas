@@ -4,6 +4,8 @@
 *.bak
 sources.txt
 credentials.txt
-*.mv.db 
+SetupConfigtable.java
+Criptografador.java
+
 
 

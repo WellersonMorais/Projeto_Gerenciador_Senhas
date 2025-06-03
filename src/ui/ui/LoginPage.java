@@ -19,6 +19,7 @@ public class LoginPage extends JFrame {
         setTitle("Login");
         setSize(400, 200);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         setLocationRelativeTo(null);
 
         initComponents();
