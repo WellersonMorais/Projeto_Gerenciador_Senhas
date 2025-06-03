@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class UserSave {
+
+    private UserSave() {
+    throw new IllegalStateException("Utility class");
+    }
     public static void salvarUsuario(String email, String senhaCriptografada) {
         String sql = "INSERT INTO users (email, password) VALUES (?, ?)";
         try (Connection conn = db.DatabaseConnection.getConnection();

@@ -6,6 +6,10 @@ import java.util.Properties;
 
 public class EmailService {
 
+    private EmailService() {
+    throw new IllegalStateException("Utility class");
+    }
+
     
     private static final String REMETENTE = "wellerson.paulo@souunit.com.br";
     private static final String SENHA_APP = "aqui hfoa pibm sqnx";

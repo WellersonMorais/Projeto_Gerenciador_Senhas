@@ -4,5 +4,6 @@
 *.bak
 sources.txt
 credentials.txt
+*.mv.db 
 
 

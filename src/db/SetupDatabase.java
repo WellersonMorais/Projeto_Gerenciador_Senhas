@@ -4,6 +4,11 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 public class SetupDatabase {
+
+    private SetupDatabase() {
+    throw new IllegalStateException("Utility class");
+    }
+
     public static void setup() {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement()) {
