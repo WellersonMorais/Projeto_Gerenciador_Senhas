@@ -36,4 +36,11 @@ public class PasswordUtils {
         }
         return sb.toString();
     }
+    public static boolean isValidPassword(String password) {
+        if (password.length() < 6) return false;
+        if (!password.matches(".*[A-Z].*")) return false; // Pelo menos uma letra maiúscula
+        if (!password.matches(".*\\d.*")) return false;   // Pelo menos um número
+        return true;
+}
+
 }
