@@ -1,7 +1,7 @@
 
 #  Gerenciador de Senhas Seguro em Java
 
-Este projeto é um **gerenciador de senhas seguro** desenvolvido em Java, como parte de uma atividade acadêmica com foco em **segurança da informação** e **interfaces gráficas com Swing**.
+Este projeto é um **gerenciador de senhas seguro** desenvolvido em Java, como parte de uma atividade acadêmica da matéria de **Desenvolvimento Seguro**.
 
 ---
 
@@ -14,19 +14,20 @@ Este projeto é um **gerenciador de senhas seguro** desenvolvido em Java, como p
 - [x] Armazenamento local com criptografia AES
 - [x] Geração e gerenciamento de senhas fortes
 - [x] Verificação de senhas vazadas usando a API [Have I Been Pwned](https://haveibeenpwned.com/)
-- [x] Indicação visual de senhas comprometidas em vermelho
-- [x] Opção de excluir ou redefinir senhas individualmente
+- [x] Indicação visual de senhas comprometidas
+- [x] Exclusão de blocos cadastrados
 
 ---
 
 ##  Tecnologias Utilizadas
 
-- Java 8+
+- Java Development Kit (JDK) v.21
 - Java Swing (interface gráfica)
 - JavaMail (envio de e-mails via SMTP)
 - jBCrypt (hash seguro de senhas)
 - AES com chave derivada por PBKDF2 (criptografia simétrica)
 - API Have I Been Pwned (verificação de vazamento)
+- H2 Database Engine (Banco de dados local)
 
 ---
 
@@ -66,12 +67,8 @@ PasswordManagerProject/
 ##  Como Executar
 
 1. **Clone o repositório** ou extraia o `.zip`
-2. **Configure o e-mail** com senha de aplicativo em `EmailSender.java`:
+2. **Compile e rode o projeto** com o arquivo .bat `compile.bat`:
 
-```java
-private static final String FROM_EMAIL = "seu-email@gmail.com";
-private static final String APP_PASSWORD = "sua-senha-de-aplicativo";
-```
 ---
 
 Este projeto foi desenvolvido com fins educacionais e demonstrativos. 
