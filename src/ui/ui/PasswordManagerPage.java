@@ -34,10 +34,10 @@ public class PasswordManagerPage extends JFrame {
         initComponents();
         loadCredentials();
 
-        int timeout = 5 * 60 * 1000; // 5 minutos em ms
+        int timeout = 5 * 60 * 1000; // 5 minutos em milissegundos
 
         inactivityTimer = new Timer(timeout, e -> {
-            inactivityTimer.stop(); // ✅ Evita execução contínua
+            inactivityTimer.stop(); // Evita execução contínua
             JOptionPane.showMessageDialog(this, "Sessão expirada por inatividade.");
             dispose();
             new LoginPage();
@@ -181,9 +181,9 @@ public class PasswordManagerPage extends JFrame {
             userField.setText("");
             passField.setText("");
 
-            JOptionPane.showMessageDialog(this, "Credencial salva com sucesso!");
+            JOptionPane.showMessageDialog(this, "Bloco salvo com sucesso!");
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar credencial: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro ao salvar Bloco: " + ex.getMessage());
             ex.printStackTrace();
         }
     }
@@ -191,11 +191,11 @@ public class PasswordManagerPage extends JFrame {
     private void deleteSelectedCredential() {
         int selectedIndex = credentialList.getSelectedIndex();
         if (selectedIndex == -1) {
-            JOptionPane.showMessageDialog(this, "Selecione uma credencial para excluir.");
+            JOptionPane.showMessageDialog(this, "Selecione um Bloco para excluir.");
             return;
         }
 
-        int confirm = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir a credencial selecionada?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir o Bloco selecionado?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
         if (confirm != JOptionPane.YES_OPTION) {
             return;
         }
@@ -247,9 +247,9 @@ public class PasswordManagerPage extends JFrame {
 
             credentialListModel.remove(selectedIndex);
 
-            JOptionPane.showMessageDialog(this, "Credencial excluída com sucesso!");
+            JOptionPane.showMessageDialog(this, "Bloco excluído com sucesso!");
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Erro ao excluir credencial: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro ao excluir Bloco: " + ex.getMessage());
             ex.printStackTrace();
         }
     }
