@@ -37,10 +37,12 @@ public class PasswordManagerPage extends JFrame {
         int timeout = 5 * 60 * 1000; // 5 minutos em ms
 
         inactivityTimer = new Timer(timeout, e -> {
+            inactivityTimer.stop(); // ✅ Evita execução contínua
             JOptionPane.showMessageDialog(this, "Sessão expirada por inatividade.");
             dispose();
             new LoginPage();
         });
+
         inactivityTimer.setRepeats(false);
         inactivityTimer.start();
 
@@ -81,9 +83,17 @@ public class PasswordManagerPage extends JFrame {
         passField = new JPasswordField();
 
         JButton generateButton = new JButton("Gerar senha forte");
+        generateButton.setToolTipText("Gera uma senha segura e aleatória");
+
         JButton saveButton = new JButton("Salvar");
+        saveButton.setToolTipText("Salva a senha no gerenciador");
+
         JButton deleteButton = new JButton("Excluir");
+        deleteButton.setToolTipText("Remove a senha selecionada");
+
         JButton logoutButton = new JButton("Sair");
+        logoutButton.setToolTipText("Encerra a sessão atual");
+
 
         JPanel inputPanel = new JPanel(new GridLayout(4, 2, 5, 5));
         inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));

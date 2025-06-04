@@ -5,6 +5,9 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import db.ConfigPass;
+
 import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -18,14 +21,13 @@ public class EncryptionUtils {
     throw new IllegalStateException("Utility class");
     }
     
-    private static final String SECRET = "chaveSuperSecreta123";
-    private static final String SALT = "saltsalt123";
+    private static final String SECRET = ConfigPass.pegarChaveSecreta();
+    private static final String SALT = ConfigPass.pegarSalt();
 
     public static String encrypt(String strToEncrypt) throws Exception {
         
-        byte[] iv = new byte[16];
-        new SecureRandom().nextBytes(iv);
-        IvParameterSpec ivSpec = new IvParameterSpec(iv);
+       byte[] iv = CryptoUtils.gerarIV(16);
+       IvParameterSpec ivSpec = new IvParameterSpec(iv);
 
       
         SecretKeySpec secretKey = getSecretKey();

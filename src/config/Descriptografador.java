@@ -46,7 +46,7 @@ public class Descriptografador {
         cifra.init(Cipher.DECRYPT_MODE, chave, ivSpec);
 
         byte[] textoDescriptografado = cifra.doFinal(textoCriptografado);
-        return new String(textoDescriptografado, "UTF-8");
+        return new String(textoDescriptografado, StandardCharsets.UTF_8);
     }
 
 }

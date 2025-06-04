@@ -13,7 +13,7 @@ public class EmailService {
     }
 
     
-    private static final String REMETENTE = "wellerson.paulo@souunit.com.br";
+    private static final String REMETENTE = ConfigPass.pegarEmail();
     private static final String SENHA_APP = ConfigPass.pegarSenhaApp();
 
     private static Session criarSessao() {

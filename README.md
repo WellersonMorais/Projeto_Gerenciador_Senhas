@@ -64,6 +64,18 @@ PasswordManagerProject/
 
 ---
 
+##  Observações
+
+Para facilitar a execução e entrega do projeto, as credenciais do banco no arquivo ```'DatabaseConnection.java'``` estão **inseridas** no código, para que a execução possa ser feita sem qualquer configuração adicional. 
+
+Em projetos reais, **não é se deve deixar credenciais hardcoded** no código. O ideal é:
+
+- Configurar credenciais por variáveis de ambiente
+- Usar arquivos externos de configuração fora do código-fonte
+- Nunca versionar senhas ou chaves no repositório
+
+---
+
 ##  Como Executar
 
 1. **Clone o repositório** ou extraia o `.zip`

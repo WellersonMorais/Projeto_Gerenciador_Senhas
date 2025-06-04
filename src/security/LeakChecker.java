@@ -27,6 +27,9 @@ public class LeakChecker {
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
 
+            con.addRequestProperty("Accept", "application/json");
+            con.addRequestProperty("User-Agent", "MeuApp/1.0");
+
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String line;
             while ((line = in.readLine()) != null) {
