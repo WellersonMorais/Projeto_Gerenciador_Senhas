@@ -36,10 +36,14 @@ Este projeto é um **gerenciador de senhas seguro** desenvolvido em Java, como p
 ```
 PasswordManagerProject/
 ├── src/
-│ ├── main/
-│ │ └── Main.java
-│ ├── model/
-│ │ └── User.java
+│ ├── config/
+| | ├── Descriptografador.java
+│ │ ├── private_key.enc
+│ ├── db/
+│ │ ├── ConfigPass.java
+│ │ ├── DatabaseConnection.java
+│ │ ├── SetupDatabase.java
+│ │ └── UserSave.java
 │ ├── ui/
 │ │ ├── RegisterPage.java
 │ │ ├── LoginPage.java
@@ -49,10 +53,12 @@ PasswordManagerProject/
 │ │ ├── EncryptionUtils.java
 │ │ ├── LeakChecker.java
 │ │ └── EmailSender.java
+│ │ └── CryptoUtils.java
+│ ├── model/
+│ │ └── User.java
 ├── lib/ # Bibliotecas .jar (jBCrypt, mail, etc.)
 ├── out/ # Diretório de saída da compilação
 ├── compile-run.bat # Script para compilar e executar
-├── credentials.txt # Dados criptografados
 └── README.md
 ```
 
